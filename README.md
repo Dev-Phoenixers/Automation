@@ -1,2 +1,2 @@
 # Automation
-I'm working on a application for creating a simulation on automata
+I'm working on a application for creating a simulation on automata. The kivy GUI is awesome...
