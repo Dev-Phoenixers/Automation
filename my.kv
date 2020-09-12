@@ -1,0 +1,101 @@
+<MainWindow>:
+
+    FloatLayout:
+        Label:
+            pos_hint:{"center_x": 0.5, "top":0.98}
+            size_hint:0.1, 0.1
+            text: "Automata Simulation "
+            font_size: 42
+        
+        Label:
+            pos_hint:{"center_x": 0.5, "top":0.8}
+            size_hint:0.1,0.15
+            text: "This is a simple Automata simulation software and this is user friendly.\nIt works fine you can use it and check how it works!!! "
+            font_size: 20
+        
+        Button:
+            pos_hint:{"x":0.1,"y":0.5}
+            size_hint: 0.3, 0.1
+            font_size: 20
+            text: "Turing Machine"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.tur()
+                
+        Button:
+            pos_hint:{"x":0.6,"y":0.5}
+            size_hint: 0.3, 0.1
+            font_size: 20
+            text: "Finite Automata"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.auto()
+        Button:
+            pos_hint:{"center_x":0.5,"y":0.3}
+            size_hint: 0.3, 0.1
+            font_size: 20
+            text: "Regular Expression"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.reg()
+
+
+<AutomataWindow>:
+    FloatLayout:
+        Button:
+            pos_hint:{"center_x": 0.9, "top":1.0}
+            size_hint: 0.2, 0.1
+            text: "Return"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.reset()
+                
+        Label:
+            pos_hint:{"center_x": 0.5, "top":0.9}
+            size_hint:0.2, 0.1
+            text: "Automata Simulation "
+            font_size: 35
+
+        
+        Button:
+            pos_hint:{"x":0.1,"y":0.5}
+            size_hint: 0.3, 0.1
+            font_size: 15
+            text: "Deterministic Finite Automata"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.dfa()
+                
+        Button:
+            pos_hint:{"x":0.6,"y":0.5}
+            size_hint: 0.3, 0.1
+            font_size: 15
+            text: "Non Deterministic Finite Automata"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.nfa()
+
+
+<Regularex>:
+    FloatLayout:
+        Button:
+            pos_hint:{"center_x": 0.9, "top":1.0}
+            size_hint: 0.2, 0.1
+            text: "Return"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.reset()
+        
+        Label:
+            pos_hint:{"center_x": 0.5, "top":0.97}
+            size_hint:0.1, 0.1
+            text: "Regular Expression analyzer"
+            font_size: 35
+        
+        Label:
+            pos_hint:{"x":2.0, "top":0.8}
+            size_hint:0.1, 0.1
+            text: "Regular Expression"
+            font_size: 17
+            
+        
