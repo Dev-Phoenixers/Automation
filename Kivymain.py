@@ -5,6 +5,13 @@ from kivy.uix.label import Label
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.textinput import TextInput
+from kivy.uix.behaviors import ButtonBehavior
+from kivy.uix.image import Image
+from kivy.config import Config
+from kivy.uix.tabbedpanel import TabbedPanel
+Config.set('graphics', 'window_state', 'maximized')
+Config.set('graphics', 'resizable', True)
+
 
 import os
 
@@ -28,6 +35,9 @@ class Regularex(Screen):
         pass
     def reset(self):
         sm.current="main"
+    def process0(self):
+        self.text = self.txt1.text 
+        self.exp=self.text
 class TuringWindow(Screen):
     pass
 
