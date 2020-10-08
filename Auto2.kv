@@ -1,0 +1,123 @@
+<FAWindow>:
+    FloatLayout:
+        TabbedPanel:
+            size_hint: 1,1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            tab_width: 100
+            do_default_tab: False
+            TabbedPanelItem:
+                text: 'Automata'
+                FloatLayout:
+                    Label:
+                        pos_hint:{"center_x": 0.5, "top":1.05}
+                        size_hint:0.4, 0.3
+                        text: "Deterministic Finite Automata"
+                        font_size: 35
+                    Label:
+                        pos_hint:{"center_x": 0.5, "top":0.8}
+                        font_size: 19
+                        size_hint:0.2,0.15
+                        text: "Finite Automata (FA) is the simplest machine to recognize patterns.The finite automata or finite state machine is an abstract machine which have five elements or tuple.\n  It has a set of states and rules for moving from one state to another but it depends upon the applied input symbol. Basically it is an abstract model of digital computer.\n Switch betweent the tabs to find the DFA and NFA"
+                    
+            TabbedPanelItem:
+                text: 'DFA'
+        
+                FloatLayout:
+                    Label:
+                        pos_hint:{"center_x": 0.5, "top":1.05}
+                        size_hint:0.4, 0.3
+                        text: "Deterministic Finite Automata"
+                        font_size: 35
+                    Label:
+                        pos_hint:{"center_x": 0.5, "top":0.8}
+                        font_size: 19
+                        size_hint:0.2,0.15
+                        text: "In DFA, for each input symbol, one can determine the state to which the machine will move.\n Hence, it is called Deterministic Automaton. As it has a finite number of states,\n the machine is called Deterministic Finite Machine or Deterministic Finite Automaton."
+                    ToggleButton:
+                        size_hint: None, None
+                        size: 0.15 * root.width, 0.015 * root.height 
+                        pos: 0.125 * root.width, 0.450 * root.height 
+                        background_normal: 'OIPb.png'
+                        background_down: 'OIPy.png'
+                        text: "Starts with"
+                        font_size: (root.width*2 + root.height*2) / 2**8
+                        group: "NFA"
+                        on_release:
+                            root.active()
+            
+                    ToggleButton:
+                        size_hint: None, None
+                        size: 0.15 * root.width, 0.015 * root.height
+                        pos: 0.435 * root.width, 0.450 * root.height 
+                        group: "NFA"
+                        background_normal: 'OIPb.png'
+                        background_down: 'OIPy.png'
+                        text: "Ends with"
+                        font_size: (root.width*2 + root.height*2) / 2**8
+                        on_release:
+                            root.active()
+                
+                    ToggleButton:
+                        size_hint: None, None
+                        size: 0.15 * root.width, 0.015 * root.height
+                        pos: 0.75 * root.width, 0.450 * root.height
+                        background_normal: 'OIPb.png'
+                        background_down: 'OIPy.png'
+                        group: "NFA"
+                        text: "In between"
+                        font_size: (root.width*2 + root.height*2) / 2**8
+                        on_release:
+                            root.active()
+
+
+            TabbedPanelItem:
+                text: 'NFA'
+                background_image: 'res5.jpg'
+                FloatLayout:
+                    Label:
+                        pos_hint:{"center_x": 0.5, "top":1.05}
+                        size_hint:0.4, 0.3
+                        text: "Non - Deterministic Finite Automata"
+                        font_size: 35
+                    Label:
+                        pos_hint:{"center_x": 0.5, "top":0.8}
+                        font_size: 19
+                        size_hint:0.2,0.15
+                        text: "In NDFA, for a particular input symbol, the machine can move to any combination of the states in the machine.\n  In other words, the exact state to which the machine moves cannot be determined \n Hence, it is called Non-deterministic Automation.."
+                
+                    ToggleButton:
+                        size_hint: None, None
+                        size: 0.15 * root.width, 0.015 * root.height 
+                        pos: 0.125 * root.width, 0.450 * root.height 
+                        background_normal: 'OIPb.png'
+                        background_down: 'OIPy.png'
+                        text: "Starts with"
+                        font_size: (root.width*2 + root.height*2) / 2**8
+                        group: "NFA"
+                        on_release:
+                            root.active()
+            
+                    ToggleButton:
+                        size_hint: None, None
+                        size: 0.15 * root.width, 0.015 * root.height
+                        pos: 0.435 * root.width, 0.450 * root.height 
+                        group: "NFA"
+                        background_normal: 'OIPb.png'
+                        background_down: 'OIPy.png'
+                        text: "Ends with"
+                        font_size: (root.width*2 + root.height*2) / 2**8
+                        on_release:
+                            root.active()
+                    
+                    ToggleButton:
+                        size_hint: None, None
+                        size: 0.15 * root.width, 0.015 * root.height
+                        pos: 0.75 * root.width, 0.450 * root.height
+                        background_normal: 'OIPb.png'
+                        background_down: 'OIPy.png'
+                        group: "NFA"
+                        text: "In between"
+                        font_size: (root.width*2 + root.height*2) / 2**8
+                        on_release:
+                            root.active()
+            
