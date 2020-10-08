@@ -7,11 +7,27 @@ from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.textinput import TextInput
 from kivy.uix.popup import Popup
 from kivy.properties import ObjectProperty
+from kivy.uix.tabbedpanel import TabbedPanel
+from kivy.config import Config
 
+Config.set('graphics', 'window_state', 'maximized')
 typ="start"
 
 
 class DfaWindow(Screen):
+    global typ
+    def start(self):
+        typ="start"
+        sm.current="comm"
+    def end(self):
+        typ="end"
+        sm.current="comm"
+    def ins(self):
+        typ="ins"
+        sm.current="comm"
+    def active(self):
+        sm.current="comm"
+class NfaWindow(Screen):
     global typ
     def start(self):
         typ="start"
@@ -37,6 +53,7 @@ class CommonFA(Screen):
         self.text = self.txt2.text 
         self.st=self.text
     def display(self):
+        self.show="True"
         if typ=="start":
             if not(self.st.startswith(self.exp)):
                 self.show="False"
@@ -60,7 +77,7 @@ class WindowManager(ScreenManager):
 kv1 = Builder.load_file("Auto.kv")
 sm = WindowManager()
 
-screens = [DfaWindow(name="dfa"), CommonFA(name="comm")]
+screens = [DfaWindow(name="dfa"), CommonFA(name="comm"), NfaWindow(name="nfa")]
 for screen in screens:
     sm.add_widget(screen)
 
