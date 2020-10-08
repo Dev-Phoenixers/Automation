@@ -1,4 +1,9 @@
 <DfaWindow>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'res5.jpg'
     FloatLayout:
         spacing: 300
         Label:
@@ -10,15 +15,16 @@
         
         Label:
             pos_hint:{"center_x": 0.5, "top":0.8}
-            font_size: 20
+            font_size: 19
             size_hint:0.2,0.15
             text:"In DFA, for each input symbol, one can determine the state to which the machine will move.\n Hence, it is called Deterministic Automaton. As it has a finite number of states,\n the machine is called Deterministic Finite Machine or Deterministic Finite Automaton."
             
         ToggleButton:
             size_hint: None, None
-            size: 0.15 * root.width, 0.025 * root.height 
+            size: 0.15 * root.width, 0.015 * root.height 
             pos: 0.125 * root.width, 0.450 * root.height 
-            
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
             text: "Starts with"
             font_size: (root.width*2 + root.height*2) / 2**8
             group: "DFA"
@@ -27,10 +33,11 @@
             
         ToggleButton:
             size_hint: None, None
-            size: 0.15 * root.width, 0.025 * root.height
+            size: 0.15 * root.width, 0.015 * root.height
             pos: 0.435 * root.width, 0.450 * root.height 
             group: "DFA"
-            
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
             text: "Ends with"
             font_size: (root.width*2 + root.height*2) / 2**8
             on_release:
@@ -38,9 +45,68 @@
                 
         ToggleButton:
             size_hint: None, None
-            size: 0.15 * root.width, 0.025 * root.height
-            pos: 0.75 * root.width, 0.450 * root.height 
+            size: 0.15 * root.width, 0.015 * root.height
+            pos: 0.75 * root.width, 0.450 * root.height
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
             group: "DFA"
+            text: "In between"
+            font_size: (root.width*2 + root.height*2) / 2**8
+            on_release:
+                root.active()
+
+<NfaWindow>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'res5.jpg'
+    FloatLayout:
+        spacing: 300
+        Label:
+            pos_hint:{"center_x": 0.5, "top":1.05}
+            size_hint:0.4, 0.3
+            text: "Non - Deterministic Finite Automata"
+            font_size: 35
+        
+        
+        Label:
+            pos_hint:{"center_x": 0.5, "top":0.8}
+            font_size: 19
+            size_hint:0.2,0.15
+            text:"In NDFA, for a particular input symbol, the machine can move to any combination of the states in the machine.\n  In other words, the exact state to which the machine moves cannot be determined \n Hence, it is called Non-deterministic Automaton.."
+            
+        ToggleButton:
+            size_hint: None, None
+            size: 0.15 * root.width, 0.015 * root.height 
+            pos: 0.125 * root.width, 0.450 * root.height 
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
+            text: "Starts with"
+            font_size: (root.width*2 + root.height*2) / 2**8
+            group: "NFA"
+            on_release:
+                root.active()
+            
+        ToggleButton:
+            size_hint: None, None
+            size: 0.15 * root.width, 0.015 * root.height
+            pos: 0.435 * root.width, 0.450 * root.height 
+            group: "NFA"
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
+            text: "Ends with"
+            font_size: (root.width*2 + root.height*2) / 2**8
+            on_release:
+                root.active()
+                
+        ToggleButton:
+            size_hint: None, None
+            size: 0.15 * root.width, 0.015 * root.height
+            pos: 0.75 * root.width, 0.450 * root.height
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
+            group: "NFA"
             text: "In between"
             font_size: (root.width*2 + root.height*2) / 2**8
             on_release:
@@ -48,6 +114,11 @@
 
 
 <CommonFA>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'res5.jpg'
     txt1:txt1
     txt2:txt2
     FloatLayout:
@@ -58,7 +129,7 @@
             font_size: 35
         Label:
             text: "Condition goes here"
-            pos_hint:{"top":0.8,"x":0.04}
+            pos_hint:{"top":0.8,"x":0.05}
             size_hint:0.2,0.05
         TextInput:
             id: txt1
@@ -69,7 +140,7 @@
             
         Label:
             text: "String"
-            pos_hint:{"top":0.7,"x":0.04}
+            pos_hint:{"top":0.7,"x":0.05}
             size_hint:0.2,0.05
         TextInput:
             id: txt2
@@ -81,8 +152,10 @@
             text: "go"
             pos_hint:{"top":0.6,"center_x":0.5}
             size_hint:0.1, 0.075
+            background_normal: 'OIPg.png'
+            background_down: 'OIPy.png'
             on_release:
                 root.display()
             
-            
+
         
