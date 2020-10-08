@@ -1,5 +1,9 @@
 <MainWindow>:
-
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'hi1.jpg'
     FloatLayout:
         Label:
             pos_hint:{"center_x": 0.5, "top":0.98}
@@ -17,6 +21,8 @@
             pos_hint:{"x":0.1,"y":0.5}
             size_hint: 0.3, 0.1
             font_size: 20
+            background_normal: 'OIPr.png'
+            background_down: 'OIPy.png'
             text: "Turing Machine"
             on_release:
                 root.manager.transition.direction = "up"
@@ -26,15 +32,29 @@
             pos_hint:{"x":0.6,"y":0.5}
             size_hint: 0.3, 0.1
             font_size: 20
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
             text: "Finite Automata"
             on_release:
                 root.manager.transition.direction = "right"
                 root.auto()
         Button:
-            pos_hint:{"center_x":0.5,"y":0.3}
+            pos_hint:{"x":0.1,"y":0.3}
             size_hint: 0.3, 0.1
             font_size: 20
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
             text: "Regular Expression"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.reg()
+        Button:
+            pos_hint:{"x":0.6,"y":0.3}
+            size_hint: 0.3, 0.1
+            font_size: 20
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
+            text: "Pushdown Automata"
             on_release:
                 root.manager.transition.direction = "down"
                 root.reg()
@@ -42,10 +62,17 @@
 
 <AutomataWindow>:
     FloatLayout:
+        canvas.before:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: 'hi1.jpg'
         Button:
             pos_hint:{"center_x": 0.9, "top":1.0}
-            size_hint: 0.2, 0.1
-            text: "Return"
+            size_hint: 0.1, 0.12
+            
+            background_normal: 'home2.jpg'
+            background_down: 'home1.png'
             on_release:
                 root.manager.transition.direction = "down"
                 root.reset()
@@ -59,8 +86,10 @@
         
         Button:
             pos_hint:{"x":0.1,"y":0.5}
-            size_hint: 0.3, 0.1
+            size_hint: 0.35, 0.1
             font_size: 15
+            background_normal: 'OIPr.png'
+            background_down: 'OIPy.png'
             text: "Deterministic Finite Automata"
             on_release:
                 root.manager.transition.direction = "up"
@@ -68,8 +97,10 @@
                 
         Button:
             pos_hint:{"x":0.6,"y":0.5}
-            size_hint: 0.3, 0.1
+            size_hint: 0.39, 0.1
             font_size: 15
+            background_normal: 'OIPr.png'
+            background_down: 'OIPy.png'
             text: "Non Deterministic Finite Automata"
             on_release:
                 root.manager.transition.direction = "right"
@@ -77,11 +108,19 @@
 
 
 <Regularex>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'hi1.jpg'
+    txt1:txt1
     FloatLayout:
+        
         Button:
             pos_hint:{"center_x": 0.9, "top":1.0}
-            size_hint: 0.2, 0.1
-            text: "Return"
+            size_hint: 0.1, 0.12
+            background_normal: 'home2.jpg'
+            background_down: 'home1.png'
             on_release:
                 root.manager.transition.direction = "down"
                 root.reset()
@@ -93,9 +132,37 @@
             font_size: 35
         
         Label:
-            pos_hint:{"x":2.0, "top":0.8}
-            size_hint:0.1, 0.1
+            pos_hint:{"top":0.8,"x":0.04}
+            size_hint:0.2, 0.05
             text: "Regular Expression"
             font_size: 17
-            
         
+        TextInput:
+            id: txt1
+            hint_text:"Ex a+b a* ab*"
+            pos_hint:{"top":0.8,"x":0.3}
+            size_hint:0.3, 0.05
+            on_text: root.process0()
+        
+<TuringWindow>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'hi1.jpg'
+    FloatLayout:
+        
+        Button:
+            pos_hint:{"center_x": 0.9, "top":1.0}
+            size_hint: 0.1, 0.12
+            background_normal: 'home2.jpg'
+            background_down: 'home1.png'
+            on_release:
+                root.manager.transition.direction = "down"
+                root.reset()
+        
+        Label:
+            pos_hint:{"center_x": 0.5, "top":0.97}
+            size_hint:0.1, 0.1
+            text: "Under Process"
+            font_size: 35
