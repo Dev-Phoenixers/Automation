@@ -1,15 +1,19 @@
 <FAWindow>:
     txt1:txt1
     txt2:txt2
-    
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'geo.jpg'
     FloatLayout:
         Button:
             pos_hint:{"x":0.01, "top":0.988}
             id:btn
-            background_normal: "green.png"
+            background_normal: "red.png"
             text: 'FA'
             on_release: dropdown.open(self)
-            size_hint:0.15, 0.15
+            size_hint:0.15, 0.12
 
         Widget:
             on_parent: dropdown.dismiss()
@@ -20,14 +24,15 @@
             Button:
                 text:'DFA'
                 size_hint_y: None
-                
+                height: 44
                 on_release:
                     dropdown.select('DFA')
+                    
                     root.df()
             Button:
                 text:'NFA'
                 size_hint_y: None
-                
+                height: 44
                 on_release:
                     dropdown.select('NFA')
                     root.nf()
@@ -36,32 +41,38 @@
             pos_hint:{"center_x": 0.5, "top":1.05}
             size_hint:0.4, 0.3
             bold: True
+            color: 0,0,0,1
             text: "Finite Automata"
             font_size: 38
         Label:
             pos_hint:{"center_x": 0.5, "top":0.8}
             font_size: 0.0175 * root.width
             size_hint:0.2,0.15
+            color: 0,0,0,1
             text: "Finite Automata (FA) is the simplest machine to recognize patterns.The finite automata or finite state machine is an abstract \nmachine which have five elements or tuple.  It has a set of states and rules for moving from one state to another but it \ndepends upon the applied input symbol. Basically it is an abstract model of digital computer. \n\nSwitch between the tabs to find the DFA and NFA"
         Label:
             text: "String Verfication"
             pos_hint:{"center_x": 0.5, "top":0.55}
             size_hint:0.1, 0.1
+            color: 0,0,0,1
             font_size: 30
         Label:
             text: "Condition goes here"
             pos_hint:{"top":0.4,"x":0.05}
+            color: 0,0,0,1
             size_hint:0.2,0.05
         TextInput:
             id: txt1
             hint_text:"Ex '00', '01'"
             pos_hint:{"top":0.4,"x":0.3}
             size_hint:0.3, 0.05
+            color: 0,0,0,1
             on_text: root.process0()
             
         Label:
             text: "String"
             pos_hint:{"top":0.3,"x":0.05}
+            color: 0,0,0,1
             size_hint:0.2,0.05
         TextInput:
             id: txt2
@@ -69,6 +80,14 @@
             pos_hint:{"top":0.3,"x":0.3}
             size_hint:0.3, 0.05
             on_text: root.process1()
+        Spinner:
+            id: spin_id
+            on_text: root.call(spin_id.text)
+            text: "Starts with"
+            values: ["Starts with", "Ends with", "Inbetween"]
+            pos_hint:{"top":0.2,"x":0.3}
+            size_hint:0.2,0.07 
+        
         Button:
             text: "go"
             pos_hint:{"top":0.1,"center_x":0.5}
@@ -78,127 +97,102 @@
             on_release:
                 root.display()
 
-<Ndfa>:
+<Dfa>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'gin.jpg'
     FloatLayout:
-        TabbedPanel:
-            size_hint: 1,1
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            tab_width: 125
-            do_default_tab: False
-            TabbedPanelItem:
-                text: 'DFA'
-                FloatLayout:
-                    Label:
-                        pos_hint:{"center_x": 0.5, "top":1.05}
-                        size_hint:0.4, 0.3
-                        bold: True
-                        text: "Deterministic Finite Automata"
-                        font_size: 35
-                    Label:
-                        pos_hint:{"center_x": 0.5, "top":0.8}
-                        font_size: 0.0175 * root.width
-                        size_hint:0.2,0.15
-                        text: "In DFA, for each input symbol, one can determine the state to which the machine will move. Hence, it is called Deterministic \nAutomaton. As it has a finite number of states, the machine is called Deterministic Finite Machine or Deterministic Finite\nAutomaton."
-                    ToggleButton:
-                        size_hint: None, None
-                        size: 0.15 * root.width, 0.015 * root.height 
-                        pos: 0.125 * root.width, 0.450 * root.height 
-                        background_normal: 'OIPb.png'
-                        background_down: 'OIPy.png'
-                        text: "Starts with"
-                        font_size: (root.width*2 + root.height*2) / 2**8
-                        group: "NFA"
-                        on_release:
-                            root.active()
+        Label:
+            pos_hint:{"center_x": 0.5, "top":1.05}
+            size_hint:0.4, 0.3
+            bold: True
+            color: 0,0,0,1
+            text: "Deterministic Finite Automata"
+            font_size: 35
+        Label:
+            pos_hint:{"center_x": 0.5, "top":0.8}
+            font_size: 0.0175 * root.width
+            size_hint:0.2,0.15
+            color: 0,0,0,1
+            text: "In DFA, for each input symbol, one can determine the state to which the machine will move. Hence, it is called Deterministic \nAutomaton. As it has a finite number of states, the machine is called Deterministic Finite Machine or Deterministic Finite\nAutomaton."
+        ToggleButton:
+            size_hint: None, None
+            size: 0.25 * root.width, 0.065 * root.height 
+            pos_hint:{"center_x": 0.5, "top":0.6} 
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
+            text: "Transition Table"
+            font_size: (root.width*2 + root.height*2) / 2**8
+            group: "NFA"
+            on_release:
+                root.active()
             
-                    ToggleButton:
-                        size_hint: None, None
-                        size: 0.15 * root.width, 0.015 * root.height
-                        pos: 0.435 * root.width, 0.450 * root.height 
-                        group: "NFA"
-                        background_normal: 'OIPb.png'
-                        background_down: 'OIPy.png'
-                        text: "Ends with"
-                        font_size: (root.width*2 + root.height*2) / 2**8
-                        on_release:
-                            root.active()
-                
-                    ToggleButton:
-                        size_hint: None, None
-                        size: 0.15 * root.width, 0.015 * root.height
-                        pos: 0.75 * root.width, 0.450 * root.height
-                        background_normal: 'OIPb.png'
-                        background_down: 'OIPy.png'
-                        group: "NFA"
-                        text: "In between"
-                        font_size: (root.width*2 + root.height*2) / 2**8
-                        on_release:
-                            root.active()
-
-
-            TabbedPanelItem:
-                text: 'NFA'
-                background_image: 'res5.jpg'
-                FloatLayout:
-                    Label:
-                        pos_hint:{"center_x": 0.5, "top":1.05}
-                        size_hint:0.4, 0.3
-                        bold: True
-                        text: "Non - Deterministic Finite Automata"
-                        font_size: 35
-                    Label:
-                        pos_hint:{"center_x": 0.5, "top":0.8}
-                        font_size: 0.0175 * root.width
-                        size_hint:0.2,0.15
-                        text: "In NDFA, for a particular input symbol, the machine can move to any combination of the states in the machine. In other words, the \nexact state to which the machine moves cannot be determined Hence, it is called Non-deterministic Automation.."
-                
-                    ToggleButton:
-                        size_hint: None, None
-                        size: 0.15 * root.width, 0.015 * root.height 
-                        pos: 0.125 * root.width, 0.450 * root.height 
-                        background_normal: 'OIPb.png'
-                        background_down: 'OIPy.png'
-                        text: "Starts with"
-                        font_size: (root.width*2 + root.height*2) / 2**8
-                        group: "NFA"
-                        on_release:
-                            root.active()
-            
-                    ToggleButton:
-                        size_hint: None, None
-                        size: 0.15 * root.width, 0.015 * root.height
-                        pos: 0.435 * root.width, 0.450 * root.height 
-                        group: "NFA"
-                        background_normal: 'OIPb.png'
-                        background_down: 'OIPy.png'
-                        text: "Ends with"
-                        font_size: (root.width*2 + root.height*2) / 2**8
-                        on_release:
-                            root.active()
                     
-                    ToggleButton:
-                        size_hint: None, None
-                        size: 0.15 * root.width, 0.015 * root.height
-                        pos: 0.75 * root.width, 0.450 * root.height
-                        background_normal: 'OIPb.png'
-                        background_down: 'OIPy.png'
-                        group: "NFA"
-                        text: "In between"
-                        font_size: (root.width*2 + root.height*2) / 2**8
-                        on_release:
-                            root.active()
+
+<Ndfa>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'gin.jpg'
+    FloatLayout:
+        Label:
+            pos_hint:{"center_x": 0.5, "top":1.05}
+            size_hint:0.4, 0.3
+            bold: True
+            color: 0,0,0,1
+            text: "Non - Deterministic Finite Automata"
+            font_size: 35
+        Label:
+            pos_hint:{"center_x": 0.5, "top":0.8}
+            font_size: 0.0175 * root.width
+            size_hint:0.2,0.15
+            color: 0,0,0,1
+            text: "In NDFA, for a particular input symbol, the machine can move to any combination of the states in the machine. In other words, the \nexact state to which the machine moves cannot be determined Hence, it is called Non-deterministic Automation.."
+               
+        
+            
+        ToggleButton:
+            size_hint: None, None
+            size: 0.25 * root.width, 0.065 * root.height
+            pos_hint:{"center_x": 0.5, "top":0.5}
+            group: "NFA"
+            background_normal: 'OIPb.png'
+            background_down: 'OIPy.png'
+            text: "Transition Table"
+            font_size: (root.width*2 + root.height*2) / 2**8
+            on_release:
+                root.active()
+                    
+                    
 <CommonFA>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'gis.jpg'
     txt1:txt1
     txt2:txt2
     FloatLayout:
+        Button:
+            pos_hint:{"x":0.01, "top":0.988}
+            id:btn
+            background_normal: "returnb.png"
+            background_down: "returnr.png"
+            on_release: root.back()
+            size_hint:0.135, 0.15
         Label:
             text: "Transition Table"
             pos_hint:{"center_x": 0.5, "top":0.95}
             size_hint:0.1, 0.1
+            color: 0,0,0,1
             font_size: 35
         Label:
             text: "Set of input symbols(Σ)"
             pos_hint:{"top":0.8,"x":0.05}
+            color: 0,0,0,1
             size_hint:0.2,0.05
         TextInput:
             id: txt1
@@ -211,15 +205,24 @@
             text: "String"
             pos_hint:{"top":0.7,"x":0.05}
             size_hint:0.2,0.05
+            color: 0,0,0,1
         TextInput:
             id: txt2
             hint_text:"Ex '00','010"
             pos_hint:{"top":0.7,"x":0.3}
             size_hint:0.3, 0.05
             on_text: root.process1()
+        Spinner:
+            id: spinner_id
+            on_text: root.call(spinner_id.text)
+            text: "Starts with"
+            values: ["Starts with", "Ends with", "Inbetween"]
+            pos_hint:{"top":0.6,"x":0.3}
+            size_hint:0.2,0.07
+        
         Button:
             text: "go"
-            pos_hint:{"top":0.6,"center_x":0.5}
+            pos_hint:{"top":0.5,"center_x":0.5}
             size_hint:0.1, 0.075
             background_normal: 'OIPg.png'
             background_down: 'OIPy.png'
