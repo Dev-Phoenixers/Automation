@@ -1,4 +1,3 @@
-setuptools
 kivy.deps.gstreamer
 kivy.deps.angle
 kivy
